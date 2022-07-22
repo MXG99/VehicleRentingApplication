@@ -1,4 +1,4 @@
-package com.siemens.VehicleRentingApplication.model;
+package com.siemens.vehiclerentingapplication.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,11 +15,9 @@ public class Person {
     @Getter @Setter
     private String lastName;
     @Getter @Setter
-    private LocalDate dateOfBirth;
-    @Getter @Setter
     private Gender gender;
     @Getter @Setter
-    private LocalDate issuingDateDL;
+    private int yearOfBirth;
 
     @Override
     public String toString() {
@@ -27,9 +25,8 @@ public class Person {
                 "PIN='" + PIN + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
                 ", gender=" + gender +
-                ", issuingDateDL=" + issuingDateDL +
+                ", yearOfBirth=" + yearOfBirth +
                 '}';
     }
 }

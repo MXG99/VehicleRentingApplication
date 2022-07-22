@@ -1,4 +1,4 @@
-package com.siemens.VehicleRentingApplication.model;
+package com.siemens.vehiclerentingapplication.model;
 
 
 import lombok.AllArgsConstructor;
