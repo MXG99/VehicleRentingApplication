@@ -34,9 +34,7 @@ public class PersonRepository implements IRepository<Person> {
     @Override
     public List<Person> findAll() {
         String sql = PersonQuery.FIND_ALL;
-        List<Person> personList = jdbcTemplate.query(sql, this::mapRowToPerson);
-        System.out.println(personList.size());
-        return personList;
+        return jdbcTemplate.query(sql, this::mapRowToPerson);
     }
 
     @Override
