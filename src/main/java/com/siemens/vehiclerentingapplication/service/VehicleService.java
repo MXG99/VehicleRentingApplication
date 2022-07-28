@@ -5,6 +5,7 @@ import com.siemens.vehiclerentingapplication.model.VehicleType;
 import com.siemens.vehiclerentingapplication.model.comparators.VehicleBrandComparator;
 import com.siemens.vehiclerentingapplication.model.comparators.VehicleManufacturingYearComparator;
 import com.siemens.vehiclerentingapplication.repository.VehicleRepository;
+import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +38,8 @@ public class VehicleService implements IVehicleService<Vehicle> {
     }
 
     @Override
-    public Vehicle getVehicleByType(VehicleType type) {
-        return null;
+    public List<Vehicle> getVehicleByType(VehicleType type) {
+        List<Vehicle> vehicleList = vehicleRepository.findAll();
+        return vehicleList.stream().filter(vehicle -> vehicle.getType() == type).toList();
     }
 }
