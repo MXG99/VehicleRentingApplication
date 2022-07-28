@@ -2,6 +2,8 @@ package com.siemens.vehiclerentingapplication.service;
 
 import com.siemens.vehiclerentingapplication.model.Vehicle;
 import com.siemens.vehiclerentingapplication.model.VehicleType;
+import com.siemens.vehiclerentingapplication.model.comparators.VehicleBrandComparator;
+import com.siemens.vehiclerentingapplication.model.comparators.VehicleManufacturingYearComparator;
 import com.siemens.vehiclerentingapplication.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +18,22 @@ public class VehicleService implements IVehicleService<Vehicle> {
         this.vehicleRepository = vehicleRepository;
     }
 
+    public List<Vehicle> getAllVehicles() {
+        return vehicleRepository.findAll();
+    }
+
     @Override
     public List<Vehicle> getVehicleListSortedByManufacturingYear() {
-        return vehicleRepository.findAllSortedByManufacturingYear();
+        List<Vehicle> vehicleList = vehicleRepository.findAll();
+        vehicleList.sort(new VehicleManufacturingYearComparator());
+        return vehicleList;
     }
 
     @Override
     public List<Vehicle> getVehicleListSortedByBrand() {
-        return vehicleRepository.findAllSortedByBrand();
+        List<Vehicle> vehicleList = vehicleRepository.findAll();
+        vehicleList.sort(new VehicleBrandComparator());
+        return vehicleList;
     }
 
     @Override

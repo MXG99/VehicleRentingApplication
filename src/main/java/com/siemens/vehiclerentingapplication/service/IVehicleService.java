@@ -4,10 +4,10 @@ import com.siemens.vehiclerentingapplication.model.VehicleType;
 
 import java.util.List;
 
-public interface IVehicleService<T> {
-    List<T> getVehicleListSortedByManufacturingYear();
+public interface IVehicleService<Vehicle> {
+    List<Vehicle> getVehicleListSortedByManufacturingYear();
 
-    List<T> getVehicleListSortedByBrand();
+    List<Vehicle> getVehicleListSortedByBrand();
 
-    T getVehicleByType(VehicleType type);
+    Vehicle getVehicleByType(VehicleType type);
 }
