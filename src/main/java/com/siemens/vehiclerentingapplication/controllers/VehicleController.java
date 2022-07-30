@@ -1,5 +1,7 @@
 package com.siemens.vehiclerentingapplication.controllers;
 
+import com.siemens.vehiclerentingapplication.model.Gender;
+import com.siemens.vehiclerentingapplication.model.Person;
 import com.siemens.vehiclerentingapplication.model.VehicleType;
 import com.siemens.vehiclerentingapplication.repository.VehicleRepository;
 import com.siemens.vehiclerentingapplication.service.VehicleService;
@@ -38,5 +40,14 @@ public class VehicleController {
     public String getAllVehiclesByType(Model model, @RequestParam String type) {
         model.addAttribute("vehicles", vehicleService.getVehicleByType(VehicleType.valueOf(type)));
         return "vehicles/list";
+    }
+
+    @RequestMapping("vehicles/rent")
+    public String getVehicleInformation(Model model, @RequestParam String registrationNumber) {
+        Person person = new Person();
+        model.addAttribute("person", person);
+        model.addAttribute("reg_no", registrationNumber);
+        model.addAttribute("vehicle", vehicleService.getVehicleByRegistrationNumber(registrationNumber));
+        return "vehicles/rent";
     }
 }

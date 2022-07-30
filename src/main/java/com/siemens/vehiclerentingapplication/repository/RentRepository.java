@@ -54,6 +54,8 @@ public class RentRepository implements IRepository<Rent> {
 
     @Override
     public Rent save(Rent entity) {
-        return null;
+        String sql = RentQuery.INSERT;
+        jdbcTemplate.update(sql, entity.getStartDate(), entity.getEndDate(), entity.getKillometers(), entity.getPIN(), entity.getRegistrationNumber());
+        return entity;
     }
 }

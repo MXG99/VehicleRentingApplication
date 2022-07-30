@@ -42,4 +42,8 @@ public class VehicleService implements IVehicleService<Vehicle> {
         List<Vehicle> vehicleList = vehicleRepository.findAll();
         return vehicleList.stream().filter(vehicle -> vehicle.getType() == type).toList();
     }
+
+    public Vehicle getVehicleByRegistrationNumber(String registrationNumber) {
+        return vehicleRepository.findByRegistrationNumber(registrationNumber);
+    }
 }

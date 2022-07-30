@@ -4,8 +4,10 @@ import com.siemens.vehiclerentingapplication.model.Rent;
 import com.siemens.vehiclerentingapplication.repository.RentRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -40,8 +42,17 @@ public class RentalsService implements IRentalsService<Rent> {
     }
 
     @Override
-    public Boolean rentVehicle(String registrationNumber) {
-        return null;
+    public Boolean rentVehicle(String registrationNumber, String PIN) {
+        LocalDate endDate = LocalDate.now().plusMonths(1);
+        Rent rent = new Rent(
+                1,
+                LocalDate.now(),
+                endDate, new Random().nextInt(1000),
+                PIN,
+                registrationNumber
+        );
+        rentRepository.save(rent);
+        return Boolean.TRUE;
     }
 
     @Override

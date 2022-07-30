@@ -2,11 +2,13 @@ package com.siemens.vehiclerentingapplication.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person {
     @Getter @Setter
     private String PIN;

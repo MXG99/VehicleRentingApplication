@@ -16,7 +16,7 @@ public class Vehicle {
     @Getter @Setter
     private String brand;
     @Getter @Setter
-    private String colour;
+    private String color;
 
     @Override
     public String toString() {
@@ -25,7 +25,7 @@ public class Vehicle {
                 ", type=" + type +
                 ", manufacturingYear=" + manufacturingYear +
                 ", brand='" + brand + '\'' +
-                ", colour='" + colour + '\'' +
+                ", colour='" + color + '\'' +
                 '}';
     }
 }
