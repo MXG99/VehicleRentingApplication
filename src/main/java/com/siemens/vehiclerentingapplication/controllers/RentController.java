@@ -1,6 +1,7 @@
 package com.siemens.vehiclerentingapplication.controllers;
 
 import com.siemens.vehiclerentingapplication.model.Person;
+import com.siemens.vehiclerentingapplication.service.PersonService;
 import com.siemens.vehiclerentingapplication.service.RentalsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import java.util.logging.Logger;
 @Controller
 public class RentController {
     private final RentalsService rentalsService;
+    private final PersonService personService;
     private Logger logger = Logger.getLogger(RentController.class.getName());
 
-    public RentController(RentalsService rentalsService) {
+    public RentController(RentalsService rentalsService, PersonService personService) {
         this.rentalsService = rentalsService;
+        this.personService = personService;
     }
 
     @RequestMapping("/rentals")
@@ -37,7 +40,7 @@ public class RentController {
     public String rentVehicle(@ModelAttribute("person") Person person, @RequestParam String registrationNumber) {
         logger.info("Renting vehicle with registration number: " + registrationNumber);
         logger.info("Person: " + person.toString());
-
+        personService.addPerson(person);
         rentalsService.rentVehicle(registrationNumber, person.getPIN());
         return "/utils/success";
     }

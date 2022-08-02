@@ -53,6 +53,8 @@ public class PersonRepository implements IRepository<Person> {
 
     @Override
     public Person save(Person entity) {
-        return null;
+        String sql = PersonQuery.INSERT;
+        jdbcTemplate.update(sql, entity.getPIN(), entity.getFirstName(), entity.getLastName(), entity.getGender().toString(), entity.getYearOfBirth());
+        return entity;
     }
 }
