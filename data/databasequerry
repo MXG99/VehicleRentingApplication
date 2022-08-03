@@ -1,0 +1,8 @@
+CREATE TABLE vehicles (
+    reg_no TEXT NOT NULL PRIMARY KEY,
+    veh_type TEXT NOT NULL,
+    brand TEXT NOT NULL,
+    year BIGINT NOT NULL,
+    color TEXT NOT NULL
+);
+
