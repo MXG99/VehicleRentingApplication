@@ -8,6 +8,7 @@ import com.siemens.vehiclerentingapplication.repository.VehicleRepository;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,6 +22,20 @@ public class VehicleService implements IVehicleService<Vehicle> {
 
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
+    }
+
+    public List<Vehicle> getVehicleListSortedByManufacturingYearLambda() {
+        Comparator<Vehicle> byManufacturingYear = (o1, o2) -> o1.getManufacturingYear() - o2.getManufacturingYear();
+        return vehicleRepository.findAll().stream().sorted(byManufacturingYear).collect(java.util.stream.Collectors.toList());
+    }
+
+    public List<Vehicle> getVehicleListSortedByBrandLambda() {
+        Comparator<Vehicle> byBrand = (o1, o2) -> o1.getBrand().compareTo(o2.getBrand());
+        return vehicleRepository.findAll().stream().sorted(byBrand).collect(java.util.stream.Collectors.toList());
+    }
+
+    public List<Vehicle> getAllVehiclesLambda() {
+        return null;
     }
 
     @Override

@@ -26,13 +26,13 @@ public class VehicleController {
 
     @RequestMapping("vehiclesByBrand")
     public String getAllVehiclesByBrand(Model model) {
-        model.addAttribute("vehicles", vehicleService.getVehicleListSortedByBrand());
+        model.addAttribute("vehicles", vehicleService.getVehicleListSortedByBrandLambda());
         return "vehicles/list";
     }
 
     @RequestMapping("vehiclesByYear")
     public String getAllVehiclesByYear(Model model) {
-        model.addAttribute("vehicles", vehicleService.getVehicleListSortedByManufacturingYear());
+        model.addAttribute("vehicles", vehicleService.getVehicleListSortedByManufacturingYearLambda());
         return "vehicles/list";
     }
 
